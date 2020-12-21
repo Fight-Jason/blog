@@ -4,6 +4,7 @@ import '../static/styles/pages/index.css'
 import {Row, Col, List} from 'antd'
 import Header from '../components/Header'
 import { CalendarOutlined, FolderOutlined, FireOutlined } from '@ant-design/icons';
+import Author from '../components/Author'
 const Home = () => {
 	const [ mylist , setMylist ] = useState(
 		[
@@ -40,7 +41,7 @@ const Home = () => {
 				</Col>
 
 				<Col className="comm-right" xs={0} sm={0} md={7} lg={5} xl={4}>
-					右侧
+					<Author />
 				</Col>
 			</Row>
 		</>
