@@ -4,6 +4,7 @@ import Link from 'next/link'
 import '../static/styles/pages/index.css'
 import {Row, Col, List} from 'antd'
 import axios from 'axios'
+import servicePath  from '../config/apiUrl'
 import Header from '../components/Header'
 import { CalendarOutlined, FolderOutlined, FireOutlined } from '@ant-design/icons';
 import Author from '../components/Author'
@@ -52,9 +53,9 @@ const Home = (list) => {
 }
 
 Home.getInitialProps = async () => {
-	
+	console.log(axios)
 	const promise = new Promise((resolve) => {
-		axios('http://127.0.0.1:7001/default/getArticleList').then(res => {
+		axios(servicePath.getArticleList).then(res => {
 			resolve(res.data)
 		})
 	})
