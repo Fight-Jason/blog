@@ -1,4 +1,4 @@
-import React ,{useState,useEffect} from 'react'
+import React ,{useState, useEffect} from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
 import '../static/styles/components/header.css'
@@ -12,9 +12,10 @@ import {
 
 const Header = () => {
     const [navArray , setNavArray] = useState([])
-    useEffect(()=>{
-        const fetchData = async ()=>{
-            const result = await axios(servicePath.getTypeInof).then(res => {
+    useEffect(() => {
+        const fetchData = async ()=> {
+            const result = await axios(servicePath.getTypeInfo).then(res => {
+                setNavArray(res.data.data)
                 return res.data.data
             })
             setNavArray(result)
