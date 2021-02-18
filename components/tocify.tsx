@@ -1,7 +1,6 @@
 import React from 'react';
 import { Anchor } from 'antd';
 import { last } from 'lodash';
-
 const { Link } = Anchor;
 
 export interface TocItem {
