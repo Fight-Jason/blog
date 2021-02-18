@@ -53,7 +53,6 @@ const Home = (list) => {
 }
 
 Home.getInitialProps = async () => {
-	console.log(axios)
 	const promise = new Promise((resolve) => {
 		axios(servicePath.getArticleList).then(res => {
 			resolve(res.data)

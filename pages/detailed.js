@@ -26,7 +26,7 @@ const Detailed = (props) => {
         const anchor = tocify.add(text,level)
         return `<a id="${anchor}" href="#${anchor}" class="anchor-fix"><h${level}>${text}</h${level}></a>\n`;
     }
-    console.log(tocify)
+    // markdown配置
     marked.setOptions({
         renderer, 
         gfm: true,
@@ -92,12 +92,11 @@ const Detailed = (props) => {
 }
 
 Detailed.getInitialProps = async(context)=>{
-    let id =context.query.id
+    let id = context.query.id;
     const promise = new Promise((resolve)=>{
   
       axios(servicePath.getArticleById + id).then(
         (res)=>{
-          console.log(res)
           resolve(res.data.data[0])
         }
       )
