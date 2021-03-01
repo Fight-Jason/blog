@@ -1,6 +1,7 @@
 import React from 'react';
 import { Anchor } from 'antd';
-import { last } from 'lodash';
+import * as _ from 'lodash'
+
 const { Link } = Anchor;
 
 export interface TocItem {
@@ -26,11 +27,10 @@ export default class Tocify {
     const anchor = `toc${level}${++this.index}`;
     const item = { anchor, level, text };
     const items = this.tocItems;
-
     if (items.length === 0) { // 第一个 item 直接 push
       items.push(item);
     } else {
-      let lastItem = last(items) as TocItem; // 最后一个 item
+      let lastItem = _.last(items) as TocItem; // 最后一个 item
 
       if (item.level > lastItem.level) { // item 是 lastItem 的 children
         for (let i = lastItem.level + 1; i <= 2; i++) {
@@ -40,7 +40,7 @@ export default class Tocify {
             break;
           }
 
-          lastItem = last(children) as TocItem; // 重置 lastItem 为 children 的最后一个 item
+          lastItem = _.last(children) as TocItem; // 重置 lastItem 为 children 的最后一个 item
 
           if (item.level <= lastItem.level) { // item level 小于或等于 lastItem level 都视为与 children 同级
             children.push(item);
@@ -51,7 +51,6 @@ export default class Tocify {
         items.push(item);
       }
     }
-
     return anchor;
   }
 

@@ -8,8 +8,6 @@ import Author from '../components/Author'
 import Advert from '../components/Advert'
 import Footer from '../components/Footer'
 import '../static/styles/pages/detailed.css'
-// import MarkNav from 'markdown-navbar';
-import 'markdown-navbar/dist/navbar.css';
 import axios from 'axios'
 import  servicePath  from '../config/apiUrl'
 import marked from 'marked'
@@ -40,7 +38,6 @@ const Detailed = (props) => {
             return hljs.highlightAuto(code).value;
         }
     })
-
     let html = marked(props.article_content)
     return (
         <>
