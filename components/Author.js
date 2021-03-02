@@ -9,7 +9,7 @@ const Author =()=>{
         <div className="author-div comm-box">
             <div> <Avatar size={100} src="/author.jpg"  /></div>
             <div className="author-introduction">
-                简述简述简述简述简述简述简述简述简述简述简述简述简述
+                来自深圳的小前端，诺贝尔奖得主，科学家，跆拳道黑带这些都跟我没有关系！
                 <Divider>社交账号</Divider>
                 <Avatar size={28} icon={<GithubOutlined />} className="account"  />
                 <Avatar size={28} icon={<QqOutlined />}  className="account" />

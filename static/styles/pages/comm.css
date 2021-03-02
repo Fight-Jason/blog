@@ -25,8 +25,12 @@ body{
 
 .list-title{
   font-size:1.3rem;
+  font-weight: 600;
   color: #1e90ff;
   padding: 0 0.5rem;
+}
+.list-title a {
+  color: #1e90ff;
 }
 .list-context{
   color:#777;
