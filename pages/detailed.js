@@ -12,7 +12,7 @@ import axios from 'axios'
 import  servicePath  from '../config/apiUrl'
 import marked from 'marked'
 import hljs from "highlight.js";
-import 'highlight.js/styles/monokai-sublime.css';
+import 'highlight.js/styles/vs2015.css';
 import Tocify from '../components/tocify.tsx'
 
 const Detailed = (props) => {
