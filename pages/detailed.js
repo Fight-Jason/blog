@@ -30,7 +30,6 @@ const Detailed = (props) => {
         console.log(a)
     }
     useEffect(() => {
-        console.log(progressRef.current);
         document.addEventListener('scroll', function (e) {
             const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
             progressRef.current.style.width = +(scrollTop / (document.documentElement.scrollHeight - document.documentElement.clientHeight)).toFixed(2) * 100 + '%'
