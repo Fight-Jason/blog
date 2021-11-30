@@ -26,9 +26,6 @@ const Detailed = (props) => {
             <a id="${anchor}" href="#${anchor}" class="anchor-fix"><h${level}>${text}</h${level}></a>\n
             `;
     }
-    const copyArticle = (a)=>{
-        console.log(a)
-    }
     useEffect(() => {
         document.addEventListener('scroll', function (e) {
             const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
@@ -46,7 +43,8 @@ const Detailed = (props) => {
         smartLists: true,
         smartypants: false,
         highlight: function (code) {
-            return `${hljs.highlightAuto(code).value}<span class="copy-code-btn">复制</span>`;
+            return `${hljs.highlightAuto(code).value}`;
+            // return `${hljs.highlightAuto(code).value}<span class="copy-code-btn">复制</span>`;
         }
     })
     let html = marked(props.article_content);
