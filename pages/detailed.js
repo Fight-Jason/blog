@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useRef, useEffect } from 'react'
 import Head from 'next/head'
 import {Row, Col ,Affix ,Breadcrumb  } from 'antd'
 import { CalendarOutlined, FolderOutlined, FireOutlined } from '@ant-design/icons';
@@ -19,11 +19,23 @@ const Detailed = (props) => {
     const articleContent = props.article_content
     const tocify = new Tocify()
     const renderer = new marked.Renderer()
-
+    const progressRef = useRef(null);
     renderer.heading = function(text,level,raw) {
         const anchor = tocify.add(text,level)
-        return `<a id="${anchor}" href="#${anchor}" class="anchor-fix"><h${level}>${text}</h${level}></a>\n`;
+        return `
+            <a id="${anchor}" href="#${anchor}" class="anchor-fix"><h${level}>${text}</h${level}></a>\n
+            `;
     }
+    const copyArticle = (a)=>{
+        console.log(a)
+    }
+    useEffect(() => {
+        console.log(progressRef.current);
+        document.addEventListener('scroll', function (e) {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            progressRef.current.style.width = +(scrollTop / (document.documentElement.scrollHeight - document.documentElement.clientHeight)).toFixed(2) * 100 + '%'
+        })
+    }, [])
     // markdown配置
     marked.setOptions({
         renderer, 
@@ -35,10 +47,10 @@ const Detailed = (props) => {
         smartLists: true,
         smartypants: false,
         highlight: function (code) {
-            return hljs.highlightAuto(code).value;
+            return `${hljs.highlightAuto(code).value}<span class="copy-code-btn">复制</span>`;
         }
     })
-    let html = marked(props.article_content)
+    let html = marked(props.article_content);
     return (
         <>
             <Head>
@@ -84,6 +96,7 @@ const Detailed = (props) => {
                 </Col>
             </Row>
             <Footer />
+            <div className="progress-indicator_inner" ref={progressRef}></div>
         </>
     )
 }
