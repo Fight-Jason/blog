@@ -44,3 +44,14 @@ body{
   display: inline-block;
   padding: 0 10px;
 }
+
+.progress-indicator_inner {
+  content: '';
+  top: 0;
+  position: fixed;
+  left: 0;
+  height: 3px;
+  z-index: 3;
+  background-color: #0089f2;
+  transition: width .3s cubic-bezier(0.4, 0.13, 0.5, 1.12);
+}

@@ -6,6 +6,7 @@ import { CalendarOutlined, FolderOutlined, FireOutlined } from '@ant-design/icon
 import Header from '../components/Header'
 import Author from '../components/Author'
 import Advert from '../components/Advert'
+import Progress from '../components/Progress'
 import Footer from '../components/Footer'
 import '../static/styles/pages/detailed.css'
 import axios from 'axios'
@@ -19,19 +20,12 @@ const Detailed = (props) => {
     const articleContent = props.article_content
     const tocify = new Tocify()
     const renderer = new marked.Renderer()
-    const progressRef = useRef(null);
     renderer.heading = function(text,level,raw) {
         const anchor = tocify.add(text,level)
         return `
             <a id="${anchor}" href="#${anchor}" class="anchor-fix"><h${level}>${text}</h${level}></a>\n
             `;
     }
-    useEffect(() => {
-        document.addEventListener('scroll', function (e) {
-            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-            progressRef.current.style.width = +(scrollTop / (document.documentElement.scrollHeight - document.documentElement.clientHeight)).toFixed(2) * 100 + '%'
-        })
-    }, [])
     // markdown配置
     marked.setOptions({
         renderer, 
@@ -50,6 +44,7 @@ const Detailed = (props) => {
     let html = marked(props.article_content);
     return (
         <>
+            <Progress />
             <Head>
                 <title>Detailed</title>
             </Head>
@@ -93,7 +88,6 @@ const Detailed = (props) => {
                 </Col>
             </Row>
             <Footer />
-            <div className="progress-indicator_inner" ref={progressRef}></div>
         </>
     )
 }

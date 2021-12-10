@@ -6,6 +6,7 @@ import {Row, Col, List} from 'antd'
 import axios from 'axios'
 import servicePath  from '../config/apiUrl'
 import Header from '../components/Header'
+import Progress from '../components/Progress'
 import { CalendarOutlined, FolderOutlined, FireOutlined } from '@ant-design/icons';
 import Author from '../components/Author'
 import Advert from '../components/Advert'
@@ -14,6 +15,7 @@ const Home = (list) => {
 	const [ mylist , setMylist ] = useState(list.data)
 	return(
 		<>
+			<Progress />
 			<Head>
 				<title>Home</title>
 			</Head>
