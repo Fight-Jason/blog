@@ -15,7 +15,6 @@ const Home = (list) => {
 	const [ mylist , setMylist ] = useState(list.data)
 	return(
 		<>
-			<Progress />
 			<Head>
 				<title>Home</title>
 			</Head>
